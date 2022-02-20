@@ -1,4 +1,4 @@
-from Question1 import omg, M, ka_mat, ks_mat
+from Question1 import omg, M, ka_mat, ks_mat #import results from question 1
 import numpy as np
 import matplotlib.pyplot as plt
 import math
@@ -10,11 +10,12 @@ e   = (xf/c)-0.25       # eccentricity
 cla = 2 * math.pi       # lift-curve slope
 rho = 1.225             # density of air
 
-w   = (omg[0][0] + omg[0][2])/2
+w   = (omg[0][0] + omg[0][2])/2 #Guess the value of omega
 k1  = (w*c)/(2*10)
 k2  = (w*c)/(2*80)
-i   = 1j
+i   = 1j #make sure value of i is in complex number
 
+# ----- Empty Arrays -----
 komg = []
 kzet = []
 kvel = []
@@ -35,10 +36,11 @@ for k in np.arange(k2, k1, 0.1):
     C   = rho*(((c/2)/k)**2)*ka_mat
     
     F = A - B - C
-    Q = np.linalg.inv(ks_mat)*F
+    Q = np.linalg.inv(ks_mat)*F # Q-matrix
 
-    eigv = np.linalg.eigvals(Q)
+    eigv = np.linalg.eigvals(Q) # returns eigenvalues of Q-matrix
 
+    #Same method as in question 1
     tmpkOmg = [] #temporary arrays, ignore pls
     tmpkZet = []
     for x in range(len(eigv)): 
