@@ -29,16 +29,16 @@ for v in range(0, 90):
     m12     = (b/4) * (((c**2)/2)-(c*xf))
     m21     =  m12
     m22     = (b/3) * (((c**3)/3)-((c**2)*xf)+((xf**2)*c))
-    m_mat   = np.matrix([[m11, m12], [m21, m22]]) # Mass
-    M       = m_mat*ma
+    m_mat   = np.matrix([[m11, m12], [m21, m22]]) 
+    M       = m_mat*ma # Mass
     
     # Aerodynamic Damping (C)
     c11     = c*b/10*cla
     c12     = 0
     c21     = -c**2*b/8*e*cla
     c22     = -c**3*b/24*mt
-    c_mat   = np.matrix([[c11, c12], [c21, c22]]) # Damping
-    C       = c_mat*rho*v
+    c_mat   = np.matrix([[c11, c12], [c21, c22]]) 
+    C       = c_mat*rho*v # Damping
     
     # Aerodynamic Stiffness Matrix (ka)
     ka11    = 0
@@ -77,10 +77,10 @@ for v in range(0, 90):
             for j in range(2):
                 q11[i].append(q22[i-2][j-2])
 
-    q11 = np.matrix(q11)
+    q11 = np.matrix(q11) # Q-matrix
 
     # Eigenvalues
-    eigv    = np.linalg.eigvals(q11) # linalg.eigvals() returns matrix q11 into eigenvalues
+    eigv    = np.linalg.eigvals(q11) # linalg.eigvals() returns eigenvalues of Q-matrix
     n       = len(eigv)
     
     # Omega and Zeta calculations
